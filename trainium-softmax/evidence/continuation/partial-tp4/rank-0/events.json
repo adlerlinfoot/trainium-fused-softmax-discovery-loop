@@ -49,5 +49,27 @@
         "sliding_window": null
       }
     ]
+  },
+  {
+    "phase": "sampled",
+    "time": 1791663369.5897593,
+    "prompt_tokens": [
+      10930,
+      448,
+      478,
+      66495,
+      10143,
+      3228,
+      22854,
+      13
+    ],
+    "tokens": [
+      1023
+    ],
+    "logprobs": [
+      -9.290647506713867
+    ],
+    "policy_version": 0,
+    "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee"
   }
 ]
