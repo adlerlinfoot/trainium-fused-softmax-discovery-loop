@@ -1,5 +1,17 @@
 # Full-model TP4 continuation
 
+## Superseding bounded partial-model request
+
+Start: 2026-10-10 20:07:02 UTC. Preparation ends by 20:17:02 UTC.
+Experiments stop by 21:02:02 UTC; hard deadline including Qwen restoration,
+evidence and final push is 21:22:02 UTC. No full-model or discovery run.
+Select original real-checkpoint layers at approximately 0/25/50/75/100%
+depth, nonadjacent, preserving indices, weights and attention settings.
+TP4, short input, one generated token; verify forward, finite nonzero
+gradients, one update, updated-policy generation and checkpoint restoration.
+Results must be labeled partial-model verification. Stop the superseded
+full-model process and preserve its reached stage without claiming success.
+
 Target: verify real GPT-OSS-20B TP4 forward, backward, optimizer update,
 updated-policy generation and checkpoint restore; then execute measured
 softmax discovery with nonconstant task rewards.
