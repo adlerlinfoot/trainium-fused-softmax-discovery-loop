@@ -12,3 +12,9 @@ compilation cache. Recreate these before attempting hardware verification.
 Checkpoint policy: push before risky actions and at least every five minutes
 of active work. Preserve source and compact evidence, exclude weights/caches.
 Do not claim full-model or task RL success from tiny tests or compilation.
+
+Initial checks: seven evaluator tests pass. The pinned GPT-OSS checkpoint
+has downloaded to the checkout-local Hugging Face cache. Pinned training
+dependencies are being installed. Qwen was healthy before hardware tests.
+`rl/hardware_session.py` captures its existing command and environment and
+restores it after hardware subprocess exit, including failures/interruption.
