@@ -1,0 +1,53 @@
+[
+  {
+    "phase": "initialize",
+    "time": 1791663077.9662597,
+    "model": "/workspace/impact2/trainium-softmax/.partial-checkpoint",
+    "device": "xla",
+    "tiny": false,
+    "static_experts": true,
+    "tensor_parallel_size": 4,
+    "cached_sampling": false,
+    "checkpoint_activations": true,
+    "scope": "partial-model verification"
+  },
+  {
+    "phase": "loaded",
+    "time": 1791663126.3110044,
+    "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee",
+    "selected_layers": [
+      0,
+      6,
+      12,
+      17,
+      23
+    ],
+    "attention_settings": [
+      {
+        "original_index": 0,
+        "attention_type": "sliding_attention",
+        "sliding_window": 128
+      },
+      {
+        "original_index": 6,
+        "attention_type": "sliding_attention",
+        "sliding_window": 128
+      },
+      {
+        "original_index": 12,
+        "attention_type": "sliding_attention",
+        "sliding_window": 128
+      },
+      {
+        "original_index": 17,
+        "attention_type": "full_attention",
+        "sliding_window": null
+      },
+      {
+        "original_index": 23,
+        "attention_type": "full_attention",
+        "sliding_window": null
+      }
+    ]
+  }
+]
