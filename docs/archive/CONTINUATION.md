@@ -1,3 +1,5 @@
+Historical session notes. Current results are summarized in [partial verification](../../trainium-softmax/rl/PARTIAL_VERIFICATION.md). Local runtime paths describe the original seat and are not setup instructions.
+
 # Trainium TP4 verification continuation
 
 ## Superseding bounded partial-model request

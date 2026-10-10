@@ -1,29 +1,46 @@
 # Discover on Trainium2
 
-Current continuation: [bounded partial GPT-OSS-20B TP4 hardware verification](trainium-softmax/rl/PARTIAL_VERIFICATION.md)
-using original layers 0, 6, 12, 17 and 23 **passed on all four ranks**:
-forward, finite nonzero gradients, one update, updated-weight generation and
-checkpoint restoration. Full-model and discovery experiments
-are suspended for this run. Partial results must not be read as full-model
-verification or a measured kernel speedup.
+An NKI fused-softmax evaluator and a focused
+[TTT-Discover](https://github.com/test-time-training/discover) port using local
+GPT-OSS LoRA training on Trainium2. The search code preserves PUCT sampling,
+adaptive entropic advantages and two-phase GPT-OSS completion. Sampling and
+training workers exit before kernel evaluation uses the device.
 
-Port of [TTT-Discover](https://github.com/test-time-training/discover) for fused
-softmax kernel search using `openai/gpt-oss-20b` and tensor parallelism across
-four Trainium2 cores (TP4).
+## Verified results
 
-The implementation is in `trainium-softmax/`: NKI correctness checks and device
-benchmarks, PUCT search, adaptive entropic advantages, GPT-OSS two-phase
-completion, and local Neuron LoRA updates. Sampling and training release the
-cores before generated kernels are evaluated. Failed correctness checks receive
-zero reward. Only measured, correct device kernels can replace the best kernel.
+| Verification | Recorded result |
+| --- | --- |
+| Locally written softmax seed | 72 simulator cases, 72 on-chip cases, 24 benchmarks; 207.8703 µs geometric mean |
+| Tiny-model TP4 mechanics | Forward, gradients, optimizer update, updated-policy generation and checkpoint restore passed |
+| Partial GPT-OSS-20B TP4 | Original layers 0, 6, 12, 17, 23 passed the same checks on all four ranks; no executed fallback ops |
 
-This repository continues existing work found in the pod. Historical evidence
-records a correct seed at **207.8703 microseconds** geometric mean across 24
-benchmark cases, and tiny-model TP4 tests. Full GPT-OSS-20B TP4 training and
-task-driven search are being verified; no model-generated speedup is claimed.
+Partial-model verification preserves original layer indices, weights and
+attention settings. It uses eight input tokens, one generated token and one
+optimizer update. All 98 extracted checkpoint tensor hashes match the source.
+See the [partial-model report](trainium-softmax/rl/PARTIAL_VERIFICATION.md) and
+[per-rank evidence](trainium-softmax/evidence/continuation/partial-tp4/summary.json).
 
-See `trainium-softmax/rl/README.md` for setup and commands and
-`trainium-softmax/README.md` for the kernel contract. Upstream source snapshots
-used by parity tests are in `discover-reference/`; provenance and the upstream
-MIT license are retained. Model weights, compilation caches, and training
-checkpoints are local artifacts and excluded from Git.
+**Full GPT-OSS-20B training, task-driven RL, and model-generated kernel speedups
+remain unverified.** The seed is a correctness baseline, not a discovered
+optimization. No new kernels were generated in the partial-model test.
+
+## Setup and use
+
+Use the [training setup and commands](trainium-softmax/rl/README.md) for the
+pinned Python/Neuron environment and checkpoint download. The
+[kernel contract and evaluator commands](trainium-softmax/README.md) describe
+correctness and timing. Hardware tests need an accessible Trainium device;
+TP4 requires four free cores. Fresh clones need local setup and model weights.
+
+Upstream algorithm snapshots and their MIT license are retained in
+[discover-reference](discover-reference/README.md); runtime vendor provenance
+is in [PROVENANCE.json](trainium-softmax/rl/vendor/PROVENANCE.json).
+Weights, virtual environments, compilation caches and training checkpoints
+are excluded from Git. Historical session notes are [archived](docs/archive/CONTINUATION.md).
+
+## Proposed upstream contribution
+
+The [integration report](docs/REPORT.md), [PR draft](docs/PR_DESCRIPTION.md)
+and [handoff instructions](docs/HANDOFF.md)
+prepare an additive contribution to `yahavb/trainium-agent-labs`. The draft
+does not constitute a published pull request.
