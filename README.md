@@ -1,5 +1,10 @@
 # Discover on Trainium2
 
+Current continuation: [bounded partial GPT-OSS-20B TP4 hardware verification](trainium-softmax/rl/PARTIAL_VERIFICATION.md)
+using original layers 0, 6, 12, 17 and 23. Full-model and discovery experiments
+are suspended for this run. Partial results must not be read as full-model
+verification or a measured kernel speedup.
+
 Port of [TTT-Discover](https://github.com/test-time-training/discover) for fused
 softmax kernel search using `openai/gpt-oss-20b` and tensor parallelism across
 four Trainium2 cores (TP4).
