@@ -1,0 +1,14 @@
+test_contract (test_loop.Tests.test_contract) ... ok
+test_dtype_and_nonfinite (test_loop.Tests.test_dtype_and_nonfinite) ... ok
+test_feedback_enters_next_prompt (test_loop.Tests.test_feedback_enters_next_prompt) ... ok
+test_incorrect_never_compiles_or_times (test_loop.Tests.test_incorrect_never_compiles_or_times) ... ok
+test_simulator_has_no_speed_reward (test_loop.Tests.test_simulator_has_no_speed_reward) ... ok
+test_source_rejections (test_loop.Tests.test_source_rejections) ... ok
+test_two_attempt_loop_retains_best_and_uses_feedback (test_loop.Tests.test_two_attempt_loop_retains_best_and_uses_feedback) ... {"status": "valid", "correctness": 1, "reward": 2.0, "latency_us": 500.0, "on_chip": true, "msg": "improved", "source_sha256": "b0b1cdc03b0d13cfa4154813b18e4675b6f10372e84f24fd3ea7b299f0310451", "best_latency_us": 1000.0, "speedup_vs_best": 2.0}
+{"status": "error", "correctness": 0, "reward": 0.0, "latency_us": null, "on_chip": false, "msg": "incorrect", "source_sha256": "b0b1cdc03b0d13cfa4154813b18e4675b6f10372e84f24fd3ea7b299f0310451", "best_latency_us": 500.0}
+ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.240s
+
+OK

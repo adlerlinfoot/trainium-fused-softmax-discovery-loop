@@ -21,3 +21,9 @@ restores it after hardware subprocess exit, including failures/interruption.
 
 19:56 UTC: isolated pinned training setup completed, including the recorded
 SDK explicit-core-selection patch. CPU RL and TP4 parity suite started.
+
+19:57 UTC: all eleven training tests pass outside the sandbox, including
+four-process TP4 forward/gradient/two-update/checkpoint parity. The sandbox
+run passed ten RL tests but could not create Gloo's local rendezvous.
+Compact test logs are in `trainium-softmax/evidence/continuation/`.
+Next gate: tiny TP4 on chip, with Qwen restored by the hardware session wrapper.
