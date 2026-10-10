@@ -1,0 +1,8 @@
+.venv*/
+.python/
+.pip-cache/
+.uv-cache/
+.hf-cache/
+.neuron-cache/
+__pycache__/
+*.pyc

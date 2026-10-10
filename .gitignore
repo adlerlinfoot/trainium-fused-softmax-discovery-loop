@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+trainium-softmax/rl/model-path.txt
+trainium-softmax/rl/installed-packages.txt
+trainium-softmax/rl/runs/
+trainium-softmax/runs/
+trainium-softmax/evidence/seed-hardware/seed-eval/compile-*/
+*.neff
+*.safetensors
+*.pt

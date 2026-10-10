@@ -1,0 +1,17 @@
+{
+  "versions": {
+    "nki": "0.6.0+31049202112.g85070674",
+    "neuronx-cc": "2.27.5334.0+f702b353",
+    "torch": "2.11.0",
+    "libtorch-neuronx-lite": "2.11.0.1.0.1284+f49d8626"
+  },
+  "device_nodes": [
+    "/dev/neuron0"
+  ],
+  "neuron_ls_exit": 0,
+  "neuron_ls": "[\n    {\n        \"instance_type\": \"trn2.48xlarge\",\n        \"instance_id\": \"i-09226a8c9cedc78cc\",\n        \"neuron_device\": 0,\n        \"bdf\": \"0000:9a:00.0\",\n        \"cpu_affinity\": \"0-47,96-143\",\n        \"numa_node\": \"0\",\n        \"connected_to\": [\n            10,\n            7,\n            15,\n            8\n        ],\n        \"nc_count\": 4,\n        \"logical_neuroncore_config\": 2,\n        \"memory_size\": 103079215104,\n        \"neuroncore_ids\": [\n            0,\n            1,\n            2,\n            3\n        ],\n        \"neuron_processes\": [\n            {\n                \"pid\": 1707163,\n                \"command\": \"\",\n                \"neuron_runtime_version\": \"2.34.10\"\n            },\n            {\n                \"pid\": 1707164,\n                \"command\": \"\",\n                \"neuron_runtime_version\": \"2.34.10\"\n            }\n        ]\n    }\n]",
+  "generation": "unverified until neuron-ls succeeds",
+  "runtime": "aws-neuronx-runtime-lib\t2.34.10.0-ac18d186d",
+  "model_url": null,
+  "local_model": "Qwen/Qwen3-8B"
+}

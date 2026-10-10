@@ -1,0 +1,13 @@
+--- torch_neuronx/initialization/initializer.py
++++ torch_neuronx/initialization/initializer.py
+@@ -202,8 +202,8 @@
+             visible_cores = get_visible_cores()
+             self.__set_envvar_defaulted_and_save(
+                 "NEURON_RT_VISIBLE_CORES",
+-                "LOCAL_RANK",
+-                "0" if not visible_cores else visible_cores,
++                None,
++                visible_cores or os.environ.get("LOCAL_RANK", "0"),
+             )
+ 
+         def __configure_spmd_environment():

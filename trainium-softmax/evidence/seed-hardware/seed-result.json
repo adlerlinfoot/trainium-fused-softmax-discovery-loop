@@ -1,0 +1,179 @@
+{
+  "status": "valid",
+  "correctness": 1,
+  "reward": 4.810691175558,
+  "latency_us": 207.87033785930112,
+  "on_chip": true,
+  "simulation_passed": true,
+  "timings": [
+    {
+      "case": "(1, 32)/float32/none/normal",
+      "mean_us": 12.33255,
+      "min_us": 12.006,
+      "max_us": 12.676,
+      "std_us": 0.13282133676484362
+    },
+    {
+      "case": "(1, 32)/float32/random/normal",
+      "mean_us": 12.332840000000001,
+      "min_us": 12.062,
+      "max_us": 12.659,
+      "std_us": 0.1313031393379457
+    },
+    {
+      "case": "(1, 32)/float32/causal/normal",
+      "mean_us": 12.28897,
+      "min_us": 12.016,
+      "max_us": 12.666,
+      "std_us": 0.12280109567915087
+    },
+    {
+      "case": "(1, 32)/float16/none/normal",
+      "mean_us": 12.36113,
+      "min_us": 12.043999999999999,
+      "max_us": 12.703,
+      "std_us": 0.13426709611814797
+    },
+    {
+      "case": "(1, 32)/float16/random/normal",
+      "mean_us": 12.345600000000003,
+      "min_us": 11.984,
+      "max_us": 12.690000000000001,
+      "std_us": 0.13720626807839348
+    },
+    {
+      "case": "(1, 32)/float16/causal/normal",
+      "mean_us": 12.3629,
+      "min_us": 12.098,
+      "max_us": 12.765,
+      "std_us": 0.12054779135264147
+    },
+    {
+      "case": "(17, 128)/float32/none/normal",
+      "mean_us": 85.65275,
+      "min_us": 84.97699999999999,
+      "max_us": 86.404,
+      "std_us": 0.2673636989196547
+    },
+    {
+      "case": "(17, 128)/float32/random/normal",
+      "mean_us": 85.72077,
+      "min_us": 85.123,
+      "max_us": 86.44300000000001,
+      "std_us": 0.2548648604653065
+    },
+    {
+      "case": "(17, 128)/float32/causal/normal",
+      "mean_us": 85.72081,
+      "min_us": 85.04299999999999,
+      "max_us": 86.4,
+      "std_us": 0.30016787619597163
+    },
+    {
+      "case": "(17, 128)/float16/none/normal",
+      "mean_us": 85.97149,
+      "min_us": 85.331,
+      "max_us": 87.253,
+      "std_us": 0.33018638660611066
+    },
+    {
+      "case": "(17, 128)/float16/random/normal",
+      "mean_us": 85.99103,
+      "min_us": 85.453,
+      "max_us": 86.739,
+      "std_us": 0.2983261790389835
+    },
+    {
+      "case": "(17, 128)/float16/causal/normal",
+      "mean_us": 85.98846,
+      "min_us": 85.414,
+      "max_us": 86.597,
+      "std_us": 0.27364303097283443
+    },
+    {
+      "case": "(128, 512)/float32/none/normal",
+      "mean_us": 805.99139,
+      "min_us": 804.622,
+      "max_us": 807.587,
+      "std_us": 0.6374029635168047
+    },
+    {
+      "case": "(128, 512)/float32/random/normal",
+      "mean_us": 806.1455,
+      "min_us": 804.775,
+      "max_us": 807.628,
+      "std_us": 0.5571048285556299
+    },
+    {
+      "case": "(128, 512)/float32/causal/normal",
+      "mean_us": 806.1057900000001,
+      "min_us": 804.369,
+      "max_us": 807.28,
+      "std_us": 0.5879953451346399
+    },
+    {
+      "case": "(128, 512)/float16/none/normal",
+      "mean_us": 806.1664,
+      "min_us": 804.182,
+      "max_us": 807.627,
+      "std_us": 0.9181586790963769
+    },
+    {
+      "case": "(128, 512)/float16/random/normal",
+      "mean_us": 806.34328,
+      "min_us": 804.1589999999999,
+      "max_us": 807.7289999999999,
+      "std_us": 0.93534962532734
+    },
+    {
+      "case": "(128, 512)/float16/causal/normal",
+      "mean_us": 806.3966999999999,
+      "min_us": 804.5830000000001,
+      "max_us": 807.992,
+      "std_us": 0.7469838083921252
+    },
+    {
+      "case": "(257, 1024)/float32/none/normal",
+      "mean_us": 2192.6767699999996,
+      "min_us": 2190.454,
+      "max_us": 2196.955,
+      "std_us": 1.006927960233506
+    },
+    {
+      "case": "(257, 1024)/float32/random/normal",
+      "mean_us": 2192.6031,
+      "min_us": 2190.9,
+      "max_us": 2195.4220000000005,
+      "std_us": 0.9108758806775052
+    },
+    {
+      "case": "(257, 1024)/float32/causal/normal",
+      "mean_us": 2192.6450299999997,
+      "min_us": 2190.232,
+      "max_us": 2194.638,
+      "std_us": 0.8520624443665962
+    },
+    {
+      "case": "(257, 1024)/float16/none/normal",
+      "mean_us": 2181.15917,
+      "min_us": 2178.732,
+      "max_us": 2183.997,
+      "std_us": 1.1283996637273563
+    },
+    {
+      "case": "(257, 1024)/float16/random/normal",
+      "mean_us": 2180.99654,
+      "min_us": 2177.976,
+      "max_us": 2185.7259999999997,
+      "std_us": 1.3071359257552422
+    },
+    {
+      "case": "(257, 1024)/float16/causal/normal",
+      "mean_us": 2181.0334399999997,
+      "min_us": 2178.451,
+      "max_us": 2184.4719999999998,
+      "std_us": 1.2058695395439853
+    }
+  ],
+  "msg": "Geometric mean 207.870 us; 10 warmups/100 device-traced repetitions per case."
+}

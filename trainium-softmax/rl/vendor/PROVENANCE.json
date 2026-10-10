@@ -1,0 +1,39 @@
+{
+  "commit": "6c40e82dab9d5de7416ac873ad5cd3106084aaed",
+  "files": {
+    "state": {
+      "path": "ttt_discover/tinker_utils/state.py",
+      "sha256": "6a9815ad474af825486467958d0857a6e91b8e8566b7662ec4f37c9335f16907",
+      "changes": "Local imports only; algorithm unchanged"
+    },
+    "sampler": {
+      "path": "ttt_discover/tinker_utils/sampler.py",
+      "sha256": "20173bc428709c824dc210a18d6ea0c9495769c13d833c27586805dcb6251d08",
+      "changes": "Local imports only; algorithm unchanged"
+    },
+    "advantages": {
+      "path": "ttt_discover/rl/train.py",
+      "functions": [
+        "compute_advantages"
+      ],
+      "changes": "Verbatim function extraction; dependency imports reduced"
+    },
+    "best_sequence_utils": {
+      "path": "ttt_discover/tinker_utils/best_sequence_utils.py",
+      "functions": [
+        "_atomic_write_json",
+        "_file_lock",
+        "_read_json_or_default"
+      ],
+      "changes": "Verbatim function extraction; dependency imports reduced"
+    },
+    "completers": {
+      "path": "ttt_discover/tinker_utils/completers.py",
+      "changes": "Token interfaces and TwoPhaseTokenCompleter unchanged; Tinker data types replaced with local data-only types"
+    },
+    "renderers": {
+      "path": "ttt_discover/tinker_utils/renderers.py",
+      "changes": "GptOssRenderer, response parser, generation prompt method extracted verbatim; local data-only types"
+    }
+  }
+}
