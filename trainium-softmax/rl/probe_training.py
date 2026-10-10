@@ -17,10 +17,15 @@ def main(a):
         (a.out/'events.json').write_text(json.dumps(events,indent=2))
     try:
         emit('initialize',model=a.model,device=a.device,tiny=a.tiny,static_experts=a.static_experts,
-             tensor_parallel_size=a.tensor_parallel_size,cached_sampling=a.cached_sampling,checkpoint_activations=a.checkpoint_activations)
+             tensor_parallel_size=a.tensor_parallel_size,cached_sampling=a.cached_sampling,checkpoint_activations=a.checkpoint_activations,
+             scope='partial-model verification' if a.partial else 'existing probe')
         policy=Policy(a.model,a.device,rank=32,static_experts=a.static_experts,tiny=a.tiny,max_context=128,parallel=a.parallel,
-            cached_sampling=a.cached_sampling,checkpoint_activations=a.checkpoint_activations,tensor_parallel_size=a.tensor_parallel_size)
-        emit('loaded',adapter_sha256=policy.fingerprint())
+            cached_sampling=a.cached_sampling,checkpoint_activations=a.checkpoint_activations,tensor_parallel_size=a.tensor_parallel_size,partial=a.partial)
+        attention_settings = [dict(original_index=layer.self_attn.layer_idx,
+            attention_type=layer.attention_type,sliding_window=layer.self_attn.sliding_window)
+            for layer in policy.model.base_model.model.model.layers] if a.partial else None
+        emit('loaded',adapter_sha256=policy.fingerprint(),selected_layers=policy.selected_layers,
+            attention_settings=attention_settings)
         prompt=[1,2,3] if a.tiny else policy.tokenizer.encode('Write an NKI softmax kernel.',add_special_tokens=False)[:8]
         rollout=policy.sample(prompt,max_tokens=a.sample_tokens)
         emit('sampled',**rollout)
@@ -36,9 +41,12 @@ def main(a):
         policy.restore(a.out/'checkpoint')
         emit('checkpoint_restored',adapter_sha256=policy.fingerprint())
         result=dict(status='passed',real_checkpoint=not a.tiny,model=a.model,
+            scope='partial-model verification' if a.partial else 'existing probe',selected_layers=policy.selected_layers,
+            attention_settings=attention_settings,
             on_trainium=a.device=='xla',**metrics)
     except Exception as exc:
         result=dict(status='failed',real_checkpoint=not a.tiny,model=a.model,device=a.device,
+            scope='partial-model verification' if a.partial else 'existing probe',
             error=str(exc),traceback=traceback.format_exc())
         emit('failed',error=str(exc))
     (a.out/'result.json').write_text(json.dumps(result,indent=2))
@@ -47,6 +55,7 @@ def main(a):
 if __name__=='__main__':
     p=argparse.ArgumentParser(); p.add_argument('--model',default='openai/gpt-oss-20b')
     p.add_argument('--device',choices=['cpu','xla'],default='xla')
+    p.add_argument('--partial',action='store_true')
     p.add_argument('--out',type=Path,required=True); p.add_argument('--tiny',action='store_true')
     p.add_argument('--static-experts',action='store_true'); p.add_argument('--parallel',action='store_true')
     p.add_argument('--cached-sampling',action='store_true'); p.add_argument('--checkpoint-activations',action='store_true')

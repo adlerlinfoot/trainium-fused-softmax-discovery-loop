@@ -8,7 +8,9 @@ import json
 import os
 from pathlib import Path
 import signal
+import shutil
 import subprocess
+import threading
 import time
 import urllib.request
 
@@ -16,6 +18,10 @@ import urllib.request
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--server-pid', type=int, required=True)
+    parser.add_argument('--stop-at', type=float, help='Absolute UTC epoch at which experiments stop')
+    parser.add_argument('--timeout-seconds', type=float, default=2700)
+    parser.add_argument('--evidence-source', type=Path)
+    parser.add_argument('--evidence-target', type=Path)
     parser.add_argument('command', nargs=argparse.REMAINDER)
     args = parser.parse_args()
     command = args.command
@@ -37,6 +43,7 @@ def main():
         raise KeyboardInterrupt(f'interrupted by signal {signum}')
     signal.signal(signal.SIGTERM, interrupted)
     child = None
+    deadline_timer = None
     try:
         os.killpg(group, signal.SIGTERM)
         deadline = time.monotonic() + 60
@@ -49,14 +56,43 @@ def main():
         else:
             os.killpg(group, signal.SIGKILL)
         child = subprocess.Popen(command, start_new_session=True)
-        return child.wait()
+        stop_at = min(time.time() + args.timeout_seconds, args.stop_at or float('inf'))
+        deadline_timer = threading.Timer(max(0, stop_at - time.time()),
+            lambda: os.kill(os.getpid(), signal.SIGTERM))
+        deadline_timer.daemon = True
+        deadline_timer.start()
+        last_push = time.monotonic()
+        while child.poll() is None:
+            remaining = stop_at - time.time()
+            if remaining <= 0:
+                print(json.dumps({'phase': 'experiment_deadline', 'stop_at': stop_at}), flush=True)
+                return 124
+            try:
+                child.wait(timeout=min(20, remaining))
+            except subprocess.TimeoutExpired:
+                pass
+            if args.evidence_source and time.monotonic() - last_push >= 240:
+                checkpoint(args.evidence_source, args.evidence_target)
+                last_push = time.monotonic()
+        return child.returncode
     finally:
+        if deadline_timer is not None:
+            deadline_timer.cancel()
         if child is not None and child.poll() is None:
-            os.killpg(child.pid, signal.SIGTERM)
+            groups = descendant_groups(child.pid)
+            for group_id in groups:
+                try:
+                    os.killpg(group_id, signal.SIGTERM)
+                except ProcessLookupError:
+                    pass
             try:
                 child.wait(timeout=30)
             except subprocess.TimeoutExpired:
-                os.killpg(child.pid, signal.SIGKILL)
+                for group_id in groups:
+                    try:
+                        os.killpg(group_id, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
                 child.wait()
         with Path('/tmp/vllm.log').open('a') as log:
             restored = subprocess.Popen(server, env=server_env, stdout=log, stderr=log,
@@ -84,6 +120,48 @@ def _in_group(proc, group):
         return stat[0] != 'Z' and int(stat[2]) == group
     except (OSError, ValueError, IndexError):
         return False
+
+
+def descendant_groups(pid):
+    parents = {}
+    for proc in Path('/proc').iterdir():
+        if proc.name.isdigit():
+            try:
+                parents[int(proc.name)] = int((proc / 'stat').read_text().rsplit(')', 1)[1].split()[1])
+            except (OSError, ValueError, IndexError):
+                pass
+    descendants = {pid}
+    while True:
+        expanded = descendants | {child for child, parent in parents.items() if parent in descendants}
+        if expanded == descendants:
+            break
+        descendants = expanded
+    groups = set()
+    for descendant in descendants:
+        try:
+            groups.add(os.getpgid(descendant))
+        except ProcessLookupError:
+            pass
+    groups.discard(os.getpgrp())
+    return groups
+
+
+def checkpoint(source, target):
+    if target is None:
+        raise ValueError('Evidence target required for periodic checkpoints')
+    target.mkdir(parents=True, exist_ok=True)
+    for file in source.glob('rank-*/*.json'):
+        destination = target / file.parent.name / file.name
+        destination.parent.mkdir(exist_ok=True)
+        shutil.copyfile(file, destination)
+    (target / 'progress.json').write_text(json.dumps(
+        {'scope': 'partial-model verification', 'checkpoint_utc_epoch': time.time()}, indent=2))
+    subprocess.run(['git', 'add', str(target)], check=True, timeout=15)
+    changed = subprocess.run(['git', 'diff', '--cached', '--quiet'], timeout=15).returncode
+    if changed:
+        subprocess.run(['git', 'commit', '-m', 'Checkpoint partial TP4 hardware progress'], check=True, timeout=15)
+    subprocess.run(['git', 'push', 'origin', 'HEAD'], check=True, timeout=45)
+    print(json.dumps({'phase': 'github_checkpoint_pushed', 'time': time.time()}), flush=True)
 
 
 if __name__ == '__main__':

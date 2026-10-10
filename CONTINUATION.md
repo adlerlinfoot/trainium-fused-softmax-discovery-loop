@@ -12,6 +12,15 @@ gradients, one update, updated-policy generation and checkpoint restoration.
 Results must be labeled partial-model verification. Stop the superseded
 full-model process and preserve its reached stage without claiming success.
 
+20:11 UTC: preparation completed. Selected original layers [0, 6, 12, 17, 23],
+retaining full-depth config and original module names/layer_idx. Extracted
+98 exact tensors (4.5 GiB checkpoint) with per-tensor source hashes; original
+sliding attention at 0/6/12 and full attention at 17/23. Two partial-loading
+tests and ten RL tests pass. Superseded full run stopped during initialization;
+its workers exited and Qwen became healthy again. The partial hardware runner
+has a 2700-second testing limit, absolute minute-55 interrupt, process-tree
+cleanup, service restoration, and automatic GitHub pushes every 240 seconds.
+
 Target: verify real GPT-OSS-20B TP4 forward, backward, optimizer update,
 updated-policy generation and checkpoint restore; then execute measured
 softmax discovery with nonconstant task rewards.

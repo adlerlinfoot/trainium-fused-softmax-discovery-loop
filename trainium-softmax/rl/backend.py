@@ -87,7 +87,7 @@ def shard_experts(model,rank,world,xm):
 class Policy:
     def __init__(self, model_path, device='xla', rank=32, seed=0, static_experts=False,
                  tiny=False, max_context=2048, parallel=False, cached_sampling=False, checkpoint_activations=False,
-                 tensor_parallel_size=1,tiny_kv_heads=None):
+                 tensor_parallel_size=1,tiny_kv_heads=None,partial=False):
         self.version = 0
         self.seed = seed
         self.max_context = max_context
@@ -102,6 +102,7 @@ class Policy:
         self.checkpoint_activations = checkpoint_activations
         self.world_size = 1
         self.rank_id = 0
+        self.partial = partial
         self.xm = None
         random.seed(seed); torch.manual_seed(seed)
         if device == 'xla':
@@ -144,10 +145,21 @@ class Policy:
             self.tokenizer = None
         else:
             self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-            model = AutoModelForCausalLM.from_pretrained(model_path,
+            model_class = AutoModelForCausalLM
+            if partial:
+                from partial_model import PartialGptOssForCausalLM
+                model_class = PartialGptOssForCausalLM
+            loaded = model_class.from_pretrained(model_path,
                 torch_dtype=torch.bfloat16,quantization_config=Mxfp4Config(dequantize=True),
-                attn_implementation='eager',device_map='cpu')
+                attn_implementation='eager',device_map='cpu',output_loading_info=partial)
+            if partial:
+                model, loading = loaded
+                if any(loading.get(key) for key in ('missing_keys','unexpected_keys','mismatched_keys','error_msgs')):
+                    raise RuntimeError(f'Partial checkpoint did not load exactly: {loading}')
+            else:
+                model = loaded
         self.tiny = tiny
+        self.selected_layers = list(model.config.verification_layer_indices) if partial else None
         if parallel and tensor_parallel_size == 1:
             if not static_experts: raise ValueError('Expert parallelism requires static experts')
             shard_experts(model,self.rank_id,self.world_size,self.xm)
@@ -353,10 +365,14 @@ class Policy:
             'python_rng':random.getstate(),'version':self.version},directory/'training.pt')
         (directory/'policy.json').write_text(json.dumps(dict(model_path=self.model_path,rank=self.rank,
             static_experts=self.static_experts,tiny=self.tiny,max_context=self.max_context,cached_sampling=self.cached_sampling,checkpoint_activations=self.checkpoint_activations,parallel=self.parallel,world_size=self.world_size,tensor_parallel_size=self.tensor_parallel_size,
-            version=self.version,adapter_sha256=self.fingerprint()),indent=2))
+            version=self.version,adapter_sha256=self.fingerprint(),partial=self.partial,
+            selected_layers=self.selected_layers),indent=2))
 
     def restore(self,directory):
         directory=Path(directory)
+        saved_policy=json.loads((directory/'policy.json').read_text())
+        if saved_policy.get('partial',False)!=self.partial or saved_policy.get('selected_layers')!=self.selected_layers:
+            raise RuntimeError('Checkpoint verification scope or selected layers mismatch')
         from peft import set_peft_model_state_dict
         from safetensors.torch import load_file
         state=load_file(str(directory/'adapter'/'adapter_model.safetensors'))

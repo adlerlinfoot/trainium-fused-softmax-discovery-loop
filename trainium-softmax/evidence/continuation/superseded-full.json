@@ -1,0 +1,6 @@
+{
+  "status": "cancelled_by_user_scope_change",
+  "stage_reached": "initialize; no loaded/sample/update event recorded",
+  "scope": "superseded full-model attempt",
+  "success_claimed": false
+}

@@ -7,6 +7,7 @@ __pycache__/
 .uv-cache/
 /*.log
 /PostSPMDPassesExecutionDuration.txt
+.partial-checkpoint/
 *.pyc
 trainium-softmax/rl/model-path.txt
 trainium-softmax/rl/installed-packages.txt
