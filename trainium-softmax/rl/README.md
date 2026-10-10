@@ -28,7 +28,7 @@ Checkpoint: `openai/gpt-oss-20b`, revision `6cee5e81ee83917806bbde320786a8fb61ef
 
 ## Commands
 
-From `/workspace/trainium-softmax`, after setup. TP4 commands require all four cores to be free:
+From the repository's `trainium-softmax` directory, after setup. TP4 commands require all four cores to be free:
 
 ```bash
 .venv-training312/bin/python -m unittest discover -s rl -v

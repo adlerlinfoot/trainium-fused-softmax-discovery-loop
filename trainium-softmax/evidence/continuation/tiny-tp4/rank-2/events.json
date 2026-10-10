@@ -1,0 +1,78 @@
+[
+  {
+    "phase": "initialize",
+    "time": 1791662317.3520021,
+    "model": "openai/gpt-oss-20b",
+    "device": "xla",
+    "tiny": true,
+    "static_experts": true,
+    "tensor_parallel_size": 4,
+    "cached_sampling": true,
+    "checkpoint_activations": true
+  },
+  {
+    "phase": "loaded",
+    "time": 1791662341.8216,
+    "adapter_sha256": "296dd470f6ab0366f3e224057eea75cba406a1af7583e19dddaf32643f36d6be"
+  },
+  {
+    "phase": "sampled",
+    "time": 1791662362.1026654,
+    "prompt_tokens": [
+      1,
+      2,
+      3
+    ],
+    "tokens": [
+      24,
+      50
+    ],
+    "logprobs": [
+      -4.987375259399414,
+      -4.804910182952881
+    ],
+    "policy_version": 0,
+    "adapter_sha256": "296dd470f6ab0366f3e224057eea75cba406a1af7583e19dddaf32643f36d6be"
+  },
+  {
+    "phase": "updated",
+    "time": 1791662393.801015,
+    "loss_sum": -2.0,
+    "gradient_norm": 2.287805413874915,
+    "gradients_finite": true,
+    "parameters_changed": true,
+    "before_sha256": "296dd470f6ab0366f3e224057eea75cba406a1af7583e19dddaf32643f36d6be",
+    "after_sha256": "7aaba860e39479504098f4f13653f137e085e8f7763404ea780d1c6c77175e7a",
+    "policy_version": 1,
+    "kl_policy_base": 0.0,
+    "fallback_ops": [],
+    "device": "xla:0",
+    "world_size": 4,
+    "tensor_parallel_size": 4,
+    "trainable_parameters_local": 5120
+  },
+  {
+    "phase": "sampled_updated_policy",
+    "time": 1791662393.8289268,
+    "prompt_tokens": [
+      1,
+      2,
+      3
+    ],
+    "tokens": [
+      75,
+      78
+    ],
+    "logprobs": [
+      -4.833812713623047,
+      -4.9933390617370605
+    ],
+    "policy_version": 1,
+    "adapter_sha256": "7aaba860e39479504098f4f13653f137e085e8f7763404ea780d1c6c77175e7a"
+  },
+  {
+    "phase": "checkpoint_restored",
+    "time": 1791662393.8371475,
+    "adapter_sha256": "7aaba860e39479504098f4f13653f137e085e8f7763404ea780d1c6c77175e7a"
+  }
+]

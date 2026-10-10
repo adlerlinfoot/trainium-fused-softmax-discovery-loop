@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "real_checkpoint": false,
+  "model": "openai/gpt-oss-20b",
+  "on_trainium": true,
+  "loss_sum": -2.0,
+  "gradient_norm": 2.287805413874915,
+  "gradients_finite": true,
+  "parameters_changed": true,
+  "before_sha256": "296dd470f6ab0366f3e224057eea75cba406a1af7583e19dddaf32643f36d6be",
+  "after_sha256": "7aaba860e39479504098f4f13653f137e085e8f7763404ea780d1c6c77175e7a",
+  "policy_version": 1,
+  "kl_policy_base": 0.0,
+  "fallback_ops": [],
+  "device": "xla:0",
+  "world_size": 4,
+  "tensor_parallel_size": 4,
+  "trainable_parameters_local": 5120
+}

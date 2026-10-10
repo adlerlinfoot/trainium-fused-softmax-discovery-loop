@@ -42,7 +42,7 @@ NKI 0.6 removes the older top-level `nki.baremetal` and `nki.benchmark` APIs des
 
 ## Commands
 
-From `/workspace`:
+From the repository root:
 
 ```bash
 python -m unittest discover -s trainium-softmax -v
@@ -54,9 +54,9 @@ Simulation never emits a speed reward or claims device timing. For real hardware
 
 ```bash
 export GPTOSS_BASE_URL='https://YOUR-SHARED-ENDPOINT'
-NEURON_RT_NUM_CORES=1 python /workspace/trainium-softmax/loop.py run \
+NEURON_RT_NUM_CORES=1 python trainium-softmax/loop.py run \
   --mode hardware --target trn2 --attempts 3 \
-  --out /workspace/trainium-softmax/runs/new-discovery
+  --out trainium-softmax/runs/new-discovery
 ```
 
 Use an explicit base ending in `/agg/v1`, `/disagg/v1`, or `/v1` to select the endpoint; otherwise `/agg/v1` is appended. TLS verification is enabled; `--insecure` explicitly permits the workshop endpoint's documented hostname mismatch if necessary. HTTP failures, missing model, empty/truncated code answers, and invalid candidates enter feedback for the next attempt. No access keys are required by the workshop service.
