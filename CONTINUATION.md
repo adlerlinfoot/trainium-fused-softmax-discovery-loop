@@ -1,4 +1,4 @@
-# Full-model TP4 continuation
+# Trainium TP4 verification continuation
 
 ## Superseding bounded partial-model request
 
@@ -20,6 +20,16 @@ tests and ten RL tests pass. Superseded full run stopped during initialization;
 its workers exited and Qwen became healthy again. The partial hardware runner
 has a 2700-second testing limit, absolute minute-55 interrupt, process-tree
 cleanup, service restoration, and automatic GitHub pushes every 240 seconds.
+
+20:28:37 UTC: partial-model hardware verification passed on all four ranks.
+Selected original checkpoint layers [0, 6, 12, 17, 23], short eight-token input,
+one generated token before and after one update. Finite nonzero global gradient
+norm 433.75345819947074; all ranks agree on updated hash
+`a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2`.
+Checkpoint restoration matches this hash; no executed fallback ops. Results,
+events and checkpoint policy metadata are captured per rank. Testing ended
+well before the 45-minute and minute-55 caps; Qwen is being restored. No full
+model or discovery experiment was attempted after the scope change.
 
 Target: verify real GPT-OSS-20B TP4 forward, backward, optimizer update,
 updated-policy generation and checkpoint restore; then execute measured

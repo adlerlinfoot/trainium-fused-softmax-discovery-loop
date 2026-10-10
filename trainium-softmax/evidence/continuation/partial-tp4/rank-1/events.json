@@ -71,5 +71,49 @@
     ],
     "policy_version": 0,
     "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee"
+  },
+  {
+    "phase": "updated",
+    "time": 1791664116.9913006,
+    "loss_sum": -1.0378936529159546,
+    "gradient_norm": 433.75345819947074,
+    "gradients_finite": true,
+    "parameters_changed": true,
+    "before_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee",
+    "after_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2",
+    "policy_version": 1,
+    "kl_policy_base": 0.0,
+    "fallback_ops": [],
+    "device": "xla:0",
+    "world_size": 4,
+    "tensor_parallel_size": 4,
+    "trainable_parameters_local": 2211840
+  },
+  {
+    "phase": "sampled_updated_policy",
+    "time": 1791664117.1513288,
+    "prompt_tokens": [
+      10930,
+      448,
+      478,
+      66495,
+      10143,
+      3228,
+      22854,
+      13
+    ],
+    "tokens": [
+      50987
+    ],
+    "logprobs": [
+      -11.825840950012207
+    ],
+    "policy_version": 1,
+    "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"
+  },
+  {
+    "phase": "checkpoint_restored",
+    "time": 1791664117.2005072,
+    "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"
   }
 ]

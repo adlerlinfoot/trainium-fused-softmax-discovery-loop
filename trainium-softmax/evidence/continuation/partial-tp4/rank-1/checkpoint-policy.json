@@ -1,0 +1,22 @@
+{
+  "model_path": "/workspace/impact2/trainium-softmax/.partial-checkpoint",
+  "rank": 32,
+  "static_experts": true,
+  "tiny": false,
+  "max_context": 128,
+  "cached_sampling": false,
+  "checkpoint_activations": true,
+  "parallel": true,
+  "world_size": 4,
+  "tensor_parallel_size": 4,
+  "version": 1,
+  "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2",
+  "partial": true,
+  "selected_layers": [
+    0,
+    6,
+    12,
+    17,
+    23
+  ]
+}

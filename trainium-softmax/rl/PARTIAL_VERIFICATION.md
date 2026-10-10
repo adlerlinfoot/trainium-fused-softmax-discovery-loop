@@ -1,5 +1,14 @@
 # Partial GPT-OSS-20B hardware verification
 
+**Passed on all four Trainium ranks at 2026-10-10 20:28:37 UTC.**
+On-chip forward and one-token generation, finite nonzero gradients (global
+norm **433.7534582**), one optimizer update, generation from policy version 1,
+and checkpoint restoration all completed. All ranks agree on the updated hash
+`a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2`.
+Executed fallback ops: none. Input length: eight tokens. Generation length:
+one token before and one token after the update. Experiments have stopped;
+service restoration and final evidence capture follow.
+
 This experiment executes five layers from the real GPT-OSS-20B checkpoint.
 It does **not** verify the full model, task-driven RL, or softmax optimization.
 
