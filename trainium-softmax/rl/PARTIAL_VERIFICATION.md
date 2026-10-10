@@ -6,8 +6,13 @@ norm **433.7534582**), one optimizer update, generation from policy version 1,
 and checkpoint restoration all completed. All ranks agree on the updated hash
 `a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2`.
 Executed fallback ops: none. Input length: eight tokens. Generation length:
-one token before and one token after the update. Experiments have stopped;
-service restoration and final evidence capture follow.
+one token before and one token after the update. Experiments stopped after
+17.32 minutes of hardware testing. Qwen was restored with HTTP health 200,
+test workers exited, and final evidence was captured at 20:32:17 UTC, about
+25.26 minutes after the deadline clock started. All 98 extracted tensor hashes
+match the original checkpoint, and all original configuration fields match.
+See `../evidence/continuation/partial-tp4/summary.json` for the cleanup/budget
+record and `hardware-session.txt` for the complete session log.
 
 This experiment executes five layers from the real GPT-OSS-20B checkpoint.
 It does **not** verify the full model, task-driven RL, or softmax optimization.

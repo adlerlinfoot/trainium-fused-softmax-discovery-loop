@@ -1,4 +1,6 @@
 {
   "scope": "partial-model verification",
-  "checkpoint_utc_epoch": 1791664041.5690076
+  "status": "passed",
+  "cleanup_completed": true,
+  "checkpoint_utc_epoch": 1791664337.8524318
 }

@@ -31,6 +31,14 @@ events and checkpoint policy metadata are captured per rank. Testing ended
 well before the 45-minute and minute-55 caps; Qwen is being restored. No full
 model or discovery experiment was attempted after the scope change.
 
+20:32:17 UTC: cleanup and evidence capture completed. Qwen health HTTP 200;
+test workers/compilers exited. All 98 extracted tensors match the recorded
+original checkpoint hashes and original config fields are unchanged. Hardware
+testing took 17.32 minutes; elapsed budget before final push was 25.26 minutes.
+Final artifacts include per-rank result/events/checkpoint policy metadata,
+complete session log and `partial-tp4/summary.json`. Final GitHub checkpoint
+contains this cleanup record; no further experiments are planned for this task.
+
 Target: verify real GPT-OSS-20B TP4 forward, backward, optimizer update,
 updated-policy generation and checkpoint restore; then execute measured
 softmax discovery with nonconstant task rewards.

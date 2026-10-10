@@ -1,0 +1,38 @@
+{
+  "scope": "partial-model verification",
+  "status": "passed",
+  "selected_layers": [
+    0,
+    6,
+    12,
+    17,
+    23
+  ],
+  "checkpoint_revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+  "original_config_preserved": true,
+  "extracted_tensor_hashes_match_source": 98,
+  "ranks_passed": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "input_tokens": 8,
+  "generated_tokens_per_sample": 1,
+  "optimizer_updates": 1,
+  "global_gradient_norm": 433.75345819947074,
+  "updated_adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2",
+  "executed_fallback_ops": [],
+  "qwen_restored": true,
+  "qwen_health_status": 200,
+  "test_workers_exited": true,
+  "experiment_scope": "five nonadjacent original layers only; no full-model or discovery test",
+  "budget_start_utc": "2026-10-10T20:07:02+00:00",
+  "hardware_initialize_utc": "2026-10-10T20:11:17.963218+00:00",
+  "test_completed_utc": "2026-10-10T20:28:37.200513+00:00",
+  "cleanup_evidence_completed_utc": "2026-10-10T20:32:17.852432+00:00",
+  "elapsed_minutes_before_final_push": 25.264207196235656,
+  "hardware_minutes": 17.32062157789866,
+  "experiment_stop_deadline_utc": "2026-10-10T21:02:02+00:00",
+  "hard_deadline_utc": "2026-10-10T21:22:02+00:00"
+}

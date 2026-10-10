@@ -18,6 +18,14 @@ Checkpoint: `openai/gpt-oss-20b`, revision `6cee5e81ee83917806bbde320786a8fb61ef
 
 ## Verification status
 
+- **Partial-model GPT-OSS-20B TP4 gate passed (2026-10-10):** original layers
+  0/6/12/17/23, eight input tokens, one generated token. All four ranks passed
+  forward, finite nonzero gradients, one optimizer update, updated-policy
+  generation and checkpoint restore; no executed fallback ops. Qwen was
+  restored and healthy. See [partial verification](PARTIAL_VERIFICATION.md)
+  for per-rank evidence, retained settings and the bounded run. This does not
+  validate full GPT-OSS-20B training, task RL or kernel speedup.
+
 - Existing seed: 72 simulator and 72 on-chip correctness cases, 24 device benchmarks, geometric mean 207.8703 microseconds. This is a locally written seed, not a model improvement.
 - Ten RL tests pass in the isolated Python 3.12 training environment (the seven evaluator tests use the original Python 3.13 environment): reference algorithm preservation, loss/masks, branching and persistence, routing gradients, updated sampler/checkpoint restore, two-phase completion, static cache parity, explicit reference stop handling, and two mocked search/RL iterations followed by resume. Mock orchestration is not an on-chip optimization run.
 - An additional four-process CPU TP4 parity test passes: forward log probabilities, sharded and replicated gradients, two optimizer updates against the unsharded reference, global fingerprints and checkpoint restore. This is a CPU test, not a chip measurement.

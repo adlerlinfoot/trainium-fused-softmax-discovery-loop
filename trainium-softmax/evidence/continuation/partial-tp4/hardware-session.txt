@@ -1,0 +1,104 @@
+{"phase": "pausing_qwen", "command": ["/opt/conda/bin/python3.13", "/opt/conda/bin/vllm", "serve", "--model", "Qwen/Qwen3-8B", "--tensor-parallel-size", "2", "--max-model-len", "8192", "--max-num-seqs", "4", "--block-size", "32", "--num-gpu-blocks-override", "1024", "--no-enable-prefix-caching", "--port", "8000"]}
+{"phase": "initialize", "time": 1791663077.9632185, "model": "/workspace/impact2/trainium-softmax/.partial-checkpoint", "device": "xla", "tiny": false, "static_experts": true, "tensor_parallel_size": 4, "cached_sampling": false, "checkpoint_activations": true, "scope": "partial-model verification"}
+{"phase": "initialize", "time": 1791663077.9662597, "model": "/workspace/impact2/trainium-softmax/.partial-checkpoint", "device": "xla", "tiny": false, "static_experts": true, "tensor_parallel_size": 4, "cached_sampling": false, "checkpoint_activations": true, "scope": "partial-model verification"}
+{"phase": "initialize", "time": 1791663077.9669473, "model": "/workspace/impact2/trainium-softmax/.partial-checkpoint", "device": "xla", "tiny": false, "static_experts": true, "tensor_parallel_size": 4, "cached_sampling": false, "checkpoint_activations": true, "scope": "partial-model verification"}
+{"phase": "initialize", "time": 1791663077.9778402, "model": "/workspace/impact2/trainium-softmax/.partial-checkpoint", "device": "xla", "tiny": false, "static_experts": true, "tensor_parallel_size": 4, "cached_sampling": false, "checkpoint_activations": true, "scope": "partial-model verification"}
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:13<00:27, 13.77s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:13<00:27, 13.78s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:14<00:28, 14.41s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:15<00:31, 15.57s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:18<00:08,  8.37s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:18<00:08,  8.41s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:19<00:08,  8.69s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:20<00:09,  9.24s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:22<00:00,  6.66s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:22<00:00,  7.66s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  6.80s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  7.77s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  6.88s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  7.94s/it]
+2026-10-10 20:12:04.000604:  37953  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_5604251773344229742+fad94d7c/model.neff
+2026-10-10 20:12:04.000903:  37955  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_10056644596313882045+fad94d7c/model.neff
+Loading checkpoint shards: 100%|██████████| 3/3 [00:25<00:00,  7.14s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:25<00:00,  8.34s/it]
+2026-10-10 20:12:05.000763:  37954  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_6022719653957357051+fad94d7c/model.neff
+2026-10-10 20:12:06.000208:  37952  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9931496210829355870+fad94d7c/model.neff
+{"phase": "loaded", "time": 1791663126.310905, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "selected_layers": [0, 6, 12, 17, 23], "attention_settings": [{"original_index": 0, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 6, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 12, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 17, "attention_type": "full_attention", "sliding_window": null}, {"original_index": 23, "attention_type": "full_attention", "sliding_window": null}]}
+{"phase": "loaded", "time": 1791663126.3110044, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "selected_layers": [0, 6, 12, 17, 23], "attention_settings": [{"original_index": 0, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 6, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 12, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 17, "attention_type": "full_attention", "sliding_window": null}, {"original_index": 23, "attention_type": "full_attention", "sliding_window": null}]}
+{"phase": "loaded", "time": 1791663126.3110666, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "selected_layers": [0, 6, 12, 17, 23], "attention_settings": [{"original_index": 0, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 6, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 12, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 17, "attention_type": "full_attention", "sliding_window": null}, {"original_index": 23, "attention_type": "full_attention", "sliding_window": null}]}{"phase": "loaded", "time": 1791663126.3110712, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "selected_layers": [0, 6, 12, 17, 23], "attention_settings": [{"original_index": 0, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 6, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 12, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 17, "attention_type": "full_attention", "sliding_window": null}, {"original_index": 23, "attention_type": "full_attention", "sliding_window": null}]}
+
+........................................[main 2be19a3] Checkpoint partial TP4 hardware progress
+ 5 files changed, 216 insertions(+)
+ create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/progress.json
+ create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/rank-0/events.json
+ create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/rank-1/events.json
+ create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/rank-2/events.json
+ create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/rank-3/events.json
+To https://github.com/adlerlinfoot/impact2.git
+   6cae633..2be19a3  HEAD -> main
+{"phase": "github_checkpoint_pushed", "time": 1791663318.0675013}
+........
+Compiler status PASS
+2026-10-10 20:16:04.000913:  37955  [INFO]: Compilation Successfully Completed for model.MODULE_17485729902751863179+fad94d7c.hlo_module.pb
+
+Compiler status PASS
+2026-10-10 20:16:05.000191:  37954  [INFO]: Compilation Successfully Completed for model.MODULE_794243245461767823+fad94d7c.hlo_module.pb
+
+Compiler status PASS
+2026-10-10 20:16:07.000211:  37953  [INFO]: Compilation Successfully Completed for model.MODULE_17541383747920254060+fad94d7c.hlo_module.pb
+
+Compiler status PASS
+2026-10-10 20:16:07.000482:  37952  [INFO]: Compilation Successfully Completed for model.MODULE_343021529222384352+fad94d7c.hlo_module.pb
+{"phase": "sampled", "time": 1791663369.5897593, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [1023], "logprobs": [-9.290647506713867], "policy_version": 0, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee"}
+{"phase": "sampled", "time": 1791663369.5906165, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [1023], "logprobs": [-9.290647506713867], "policy_version": 0, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee"}
+{"phase": "sampled", "time": 1791663369.5915828, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [1023], "logprobs": [-9.290647506713867], "policy_version": 0, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee"}
+{"phase": "sampled", "time": 1791663369.5922964, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [1023], "logprobs": [-9.290647506713867], "policy_version": 0, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee"}
+........................................[main 606b312] Checkpoint partial TP4 hardware progress
+ 5 files changed, 89 insertions(+), 1 deletion(-)
+To https://github.com/adlerlinfoot/impact2.git
+   2be19a3..606b312  HEAD -> main
+{"phase": "github_checkpoint_pushed", "time": 1791663559.849821}
+................................................[main 6c3eb3f] Checkpoint partial TP4 hardware progress
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To https://github.com/adlerlinfoot/impact2.git
+   606b312..6c3eb3f  HEAD -> main
+{"phase": "github_checkpoint_pushed", "time": 1791663801.532226}
+................................................[main 7116cab] Checkpoint partial TP4 hardware progress
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To https://github.com/adlerlinfoot/impact2.git
+   6c3eb3f..7116cab  HEAD -> main
+{"phase": "github_checkpoint_pushed", "time": 1791664043.619789}
+....
+Compiler status PASS
+2026-10-10 20:27:38.000445:  37955  [INFO]: Compilation Successfully Completed for model.MODULE_15131042715204236040+fad94d7c.hlo_module.pb
+...
+Compiler status PASS
+2026-10-10 20:27:57.000340:  37954  [INFO]: Compilation Successfully Completed for model.MODULE_10933257475229914305+fad94d7c.hlo_module.pb
+
+Compiler status PASS
+2026-10-10 20:28:00.000742:  37953  [INFO]: Compilation Successfully Completed for model.MODULE_8586659590523185074+fad94d7c.hlo_module.pb
+
+Compiler status PASS
+2026-10-10 20:28:06.000916:  37952  [INFO]: Compilation Successfully Completed for model.MODULE_8805155589431261828+fad94d7c.hlo_module.pb
+.
+Compiler status PASS
+2026-10-10 20:28:13.000179:  37952  [INFO]: Compilation Successfully Completed for model.MODULE_9086994728801859283+fad94d7c.hlo_module.pb
+2026-10-10 20:28:16.000737:  37953  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9086994728801859283+fad94d7c/model.neff
+2026-10-10 20:28:16.000737:  37955  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9086994728801859283+fad94d7c/model.neff
+2026-10-10 20:28:16.000738:  37954  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9086994728801859283+fad94d7c/model.neff
+2026-10-10 20:28:16.000815:  37953  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_3710300028132589106+fad94d7c/model.neff
+2026-10-10 20:28:16.000815:  37954  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_3710300028132589106+fad94d7c/model.neff
+2026-10-10 20:28:16.000816:  37952  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_3710300028132589106+fad94d7c/model.neff
+2026-10-10 20:28:16.000819:  37955  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_3710300028132589106+fad94d7c/model.neff
+.
+Compiler status PASS
+2026-10-10 20:28:29.000304:  37955  [INFO]: Compilation Successfully Completed for model.MODULE_9048219080875068286+fad94d7c.hlo_module.pb
+2026-10-10 20:28:31.000925:  37952  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9048219080875068286+fad94d7c/model.neff
+2026-10-10 20:28:31.000925:  37954  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9048219080875068286+fad94d7c/model.neff
+2026-10-10 20:28:36.000925:  37953  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9048219080875068286+fad94d7c/model.neff
+{"phase": "updated", "time": 1791664116.9913006, "loss_sum": -1.0378936529159546, "gradient_norm": 433.75345819947074, "gradients_finite": true, "parameters_changed": true, "before_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "after_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2", "policy_version": 1, "kl_policy_base": 0.0, "fallback_ops": [], "device": "xla:0", "world_size": 4, "tensor_parallel_size": 4, "trainable_parameters_local": 2211840}
+{"phase": "updated", "time": 1791664116.9917512, "loss_sum": -1.0378936529159546, "gradient_norm": 433.75345819947074, "gradients_finite": true, "parameters_changed": true, "before_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "after_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2", "policy_version": 1, "kl_policy_base": 0.0, "fallback_ops": [], "device": "xla:0", "world_size": 4, "tensor_parallel_size": 4, "trainable_parameters_local": 2211840}
+{"phase": "updated", "time": 1791664116.9917715, "loss_sum": -1.0378936529159546, "gradient_norm": 433.75345819947074, "gradients_finite": true, "parameters_changed": true, "before_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "after_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2", "policy_version": 1, "kl_policy_base": 0.0, "fallback_ops": [], "device": "xla:0", "world_size": 4, "tensor_parallel_size": 4, "trainable_parameters_local": 2211840}
+{"phase": "updated", "time": 1791664116.9917889, "loss_sum": -1.0378936529159546, "gradient_norm": 433.75345819947074, "gradients_finite": true, "parameters_changed": true, "before_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "after_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2", "policy_version": 1, "kl_policy_base": 0.0, "fallback_ops": [], "device": "xla:0", "world_size": 4, "tensor_parallel_size": 4, "trainable_parameters_local": 2211840}
+{"phase": "sampled_updated_policy", "time": 1791664117.151202, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [50987], "logprobs": [-11.825840950012207], "policy_version": 1, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}
+{"phase": "sampled_updated_policy", "time": 1791664117.1513288, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [50987], "logprobs": [-11.825840950012207], "policy_version": 1, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}
+{"phase": "sampled_updated_policy", "time": 1791664117.1513999, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [50987], "logprobs": [-11.825840950012207], "policy_version": 1, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}
+{"phase": "sampled_updated_policy", "time": 1791664117.152236, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [50987], "logprobs": [-11.825840950012207], "policy_version": 1, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}
+{"phase": "checkpoint_restored", "time": 1791664117.200503, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}{"phase": "checkpoint_restored", "time": 1791664117.2005053, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}{"phase": "checkpoint_restored", "time": 1791664117.2005072, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}{"phase": "checkpoint_restored", "time": 1791664117.2005131, "adapter_sha256": "a8039e06c32eb7dfe4493753f4f9d2fdcecbe222367c1045707b144e6c130bf2"}
+
+
+
+{"phase": "restoring_qwen", "pid": 45818}
+{"phase": "qwen_restored"}
