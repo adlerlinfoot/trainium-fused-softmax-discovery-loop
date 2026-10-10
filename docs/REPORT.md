@@ -1,5 +1,7 @@
 # Discover on Trainium: integration context and verification report
 
+**Team 12:** Adler Linfoot, Alexader Hackett, Solal Pinhas-Meyer
+
 ## What this was intended to plug into
 
 The destination is the NYU × Annapurna Labs workshop repository,

@@ -1,5 +1,7 @@
 # Add Discover softmax evaluation and verified partial GPT-OSS TP4 training
 
+**Team 12:** Adler Linfoot, Alexader Hackett, Solal Pinhas-Meyer
+
 The labs currently provide agent exercises and shared GPT-OSS inference.
 This contribution adds a standalone NKI softmax correctness/benchmark evaluator
 and a focused Discover port with local Neuron LoRA training, plus reproducible
