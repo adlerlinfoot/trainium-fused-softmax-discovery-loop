@@ -18,3 +18,6 @@ has downloaded to the checkout-local Hugging Face cache. Pinned training
 dependencies are being installed. Qwen was healthy before hardware tests.
 `rl/hardware_session.py` captures its existing command and environment and
 restores it after hardware subprocess exit, including failures/interruption.
+
+19:56 UTC: isolated pinned training setup completed, including the recorded
+SDK explicit-core-selection patch. CPU RL and TP4 parity suite started.
