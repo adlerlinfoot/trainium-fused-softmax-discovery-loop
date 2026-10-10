@@ -12,9 +12,11 @@ PR title/body: [PR_DESCRIPTION.md](PR_DESCRIPTION.md).
 | `discover-reference/` | Copy tracked snapshots and MIT license at the same path |
 | `docs/archive/` | Copy under `docs/discover-trainium/archive/` |
 | `docs/REPORT.md` | Copy to `docs/discover-trainium/REPORT.md`; fix links for its new depth |
+| `docs/HANDOFF_VALIDATION.json` | Copy to `docs/discover-trainium/HANDOFF_VALIDATION.json` |
 | `docs/PR_DESCRIPTION.md` | Local PR body; no need to include in target commit |
 | `README.md` | Append a Discover section to the existing lab README; preserve its contents |
 | `.gitignore` | Append missing exclusions; preserve existing patterns |
+| `.gitattributes` | Merge vendor/snapshot/patch whitespace rules; preserve existing attributes |
 
 Archive document links need one additional `../` in the target because the
 archive moves beneath `docs/discover-trainium/`.
@@ -31,6 +33,17 @@ as part of this handoff.
 The prepared PR body is `/tmp/impact2-pr-body.md`, with the title heading
 removed and report links rewritten for the target layout. The complete
 write-up is [REPORT.md](REPORT.md).
+
+## Readiness validation
+
+All **20 tests** passed in the prepared target checkout: seven evaluator
+tests and thirteen RL/TP4/partial-model tests. JSON parsing, local documentation
+links, staged whitespace checks and reverse patch applicability passed. The
+copied code/evidence matches impact2 byte for byte; the target's existing
+README and ignore rules retain their original contents. No weights, compiler
+binaries or training checkpoint files are in the proposed diff. See
+[HANDOFF_VALIDATION.json](HANDOFF_VALIDATION.json). The checks used the existing
+isolated environment; hardware experiments were not repeated.
 
 ## Publish when requested
 

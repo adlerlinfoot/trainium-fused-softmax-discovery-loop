@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-10T22:02:25.204777+00:00",
+  "target_repository": "yahavb/trainium-agent-labs",
+  "target_base_branch": "master",
+  "target_base_revision": "8f1ca418827a3b4adc88a766262d065b639b7d46",
+  "prepared_branch": "discover-trainium-tp4",
+  "fork_created": false,
+  "pull_request_opened": false,
+  "software_tests": {
+    "evaluator": 7,
+    "rl_tp4_partial": 13,
+    "total": 20,
+    "status": "passed"
+  },
+  "documentation_links": "passed",
+  "json_parse": "passed",
+  "staged_whitespace": "passed",
+  "reverse_patch_check": "passed",
+  "source_code_and_evidence_byte_identical": true,
+  "target_readme_and_ignore_preserved": true,
+  "model_weights_and_training_binaries_included": false,
+  "hardware_experiments_repeated": false
+}

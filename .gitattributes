@@ -1,0 +1,4 @@
+# Preserve upstream formatting and significant whitespace in patch context.
+discover-reference/** -whitespace
+trainium-softmax/rl/vendor/** -whitespace
+trainium-softmax/rl/sdk-patches/*.patch -whitespace

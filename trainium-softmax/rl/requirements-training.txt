@@ -6,3 +6,4 @@ islpy==2026.1
 transformers==4.57.6
 peft==0.18.1
 accelerate==1.15.0
+httpx==0.28.1

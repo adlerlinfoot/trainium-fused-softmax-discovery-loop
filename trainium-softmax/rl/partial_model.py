@@ -22,4 +22,3 @@ class PartialGptOssForCausalLM(GptOssForCausalLM):
         self.model.layers = OriginalIndexLayers({str(i): self.model.layers[i] for i in selected})
         # Keep full-depth config and layer_types unchanged: attention modules
         # retain their original layer_idx, sliding window and RoPE settings.
-

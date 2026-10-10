@@ -22,6 +22,9 @@ evaluation. Checkpoint restore and resume preserve policy fingerprints.
 
 ## Validation
 
+The prepared upstream checkout passes all **20 software tests** below; no
+hardware experiment was repeated during handoff preparation.
+
 - Seven evaluator tests passed.
 - Ten RL tests, one four-process CPU TP4 parity test, and two partial-model
   loading/selection tests passed.
@@ -39,6 +42,10 @@ Compact per-rank evidence, tensor provenance, setup instructions and the
 partial-model report are included. Model weights, environments, training
 checkpoints and compiler caches are excluded. Upstream snapshots retain their
 MIT license and source provenance.
+
+The isolated environment also installs the evaluator's `httpx` client, so a
+fresh setup can run both test suites. Whitespace attributes preserve upstream
+snapshot/vendor formatting and the meaningful context spaces in SDK patches.
 
 ## Scope and limitations
 
