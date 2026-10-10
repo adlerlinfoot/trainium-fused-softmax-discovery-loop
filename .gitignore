@@ -1,4 +1,8 @@
 __pycache__/
+.venv-training312
+.python
+.hf-cache
+.neuron-cache
 *.pyc
 trainium-softmax/rl/model-path.txt
 trainium-softmax/rl/installed-packages.txt
