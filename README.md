@@ -45,3 +45,13 @@ The [integration report](docs/REPORT.md), [PR draft](docs/PR_DESCRIPTION.md)
 and [handoff instructions](docs/HANDOFF.md)
 prepare an additive contribution to `yahavb/trainium-agent-labs`. The draft
 does not constitute a published pull request.
+
+## Acknowledgments
+
+This project began at the NYU × Annapurna Labs 2026 hackathon.
+It was developed collaboratively by Adler Linfoot, Alexader Hackett, and
+Solal Pinhas-Meyer.
+
+The project is derived from [TTT-Discover](https://github.com/test-time-training/discover).
+Credit for the retained search and learning algorithms belongs to the upstream
+authors; their source provenance and MIT license notices are preserved.
