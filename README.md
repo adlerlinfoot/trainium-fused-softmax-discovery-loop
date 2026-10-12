@@ -1,6 +1,5 @@
-# Team 12: Trainium Fused-Softmax Discovery Loop
+# Trainium Fused-Softmax Discovery Loop
 
-**Team:** Adler Linfoot, Alexader Hackett, Solal Pinhas-Meyer
 
 An NKI fused-softmax evaluator and a focused
 [TTT-Discover](https://github.com/test-time-training/discover) port using local

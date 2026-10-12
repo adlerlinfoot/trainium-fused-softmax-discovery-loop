@@ -1,11 +1,20 @@
-# Add Discover softmax evaluation and verified partial GPT-OSS TP4 training
+# Add hardware-validated NKI softmax evaluation and a TTT-Discover Trainium port
 
-**Team 12:** Adler Linfoot, Alexader Hackett, Solal Pinhas-Meyer
 
-The labs currently provide agent exercises and shared GPT-OSS inference.
-This contribution adds a standalone NKI softmax correctness/benchmark evaluator
-and a focused Discover port with local Neuron LoRA training, plus reproducible
-partial-model TP4 verification using real GPT-OSS-20B checkpoint layers.
+This contribution extends the workshop's model → checker → feedback workflow
+with a standalone NKI fused-softmax evaluator and local Neuron LoRA training
+infrastructure. It delivers device correctness checks and latency feedback for
+a defined kernel task, plus four-way tensor-parallel training mechanics verified
+on real GPT-OSS-20B checkpoint layers.
+
+The project is derived from **[TTT-Discover](https://github.com/test-time-training/discover)**,
+the implementation accompanying *Learning to Discover at Test Time*, at commit
+[`6c40e82dab9d5de7416ac873ad5cd3106084aaed`](https://github.com/test-time-training/discover/tree/6c40e82dab9d5de7416ac873ad5cd3106084aaed).
+Credit for the retained search/learning algorithms belongs to the upstream
+authors. This project contributes the Trainium adaptation: the NKI task/evaluator,
+local training backend, TP4 LoRA execution, device scheduling, and verification
+tooling. Upstream source provenance, reference snapshots, algorithm parity tests,
+and MIT license notices are retained.
 
 The accompanying [integration report](REPORT.md)
 explains how this extends the workshop's model → checker → feedback loop,
@@ -22,7 +31,7 @@ upstream PUCT sampling, adaptive entropic advantages and GPT-OSS two-phase
 completion. Separate sampling/training processes release cores before kernel
 evaluation. Checkpoint restore and resume preserve policy fingerprints.
 
-## Validation
+## Delivered results and validation
 
 The prepared upstream checkout passes all **20 software tests** below; no
 hardware experiment was repeated during handoff preparation.
@@ -51,9 +60,18 @@ snapshot/vendor formatting and the meaningful context spaces in SDK patches.
 
 ## Scope and limitations
 
+Development and hardware experiments took place during the NYU × Annapurna Labs
+workshop. The contributor maintaining this handoff no longer has access to the
+Trainium2 seat. This submission preserves the completed engineering work and
+hardware evidence; further device validation requires a maintainer with hardware
+access. No new hardware run is claimed for this documentation revision.
+
 This is **partial-model verification**, not proof of full GPT-OSS-20B training,
 task-driven RL, or a model-generated kernel speedup. The seed is a correctness
-baseline. Dense fixed-shape expert routing favors compatibility over sparse
+baseline, not a comparison against an optimized library kernel. The partial
+gate used a synthetic +1 advantage to isolate update mechanics; it did not use
+measured kernel rewards or establish full-model generation quality.
+Dense fixed-shape expert routing favors compatibility over sparse
 execution efficiency. The NKI adapter and explicit-core SDK patch depend on
 the pinned Neuron stack. The optional Qwen lifecycle wrapper is seat-specific.
 
@@ -62,3 +80,10 @@ The contribution adds `trainium-softmax/`, `discover-reference/` and
 artifact exclusions into `.gitignore`, and adds documentation links to the
 existing lab README. Existing lab projects and serving configuration are
 preserved. Full-model and discovery entry points remain experimental.
+
+For a future hardware maintainer, the next gates are full-model memory and
+forward/backward compilation, a discovery group with nonconstant measured
+rewards, and generation from the updated policy. Any speedup claim requires
+accepted candidates measured against the seed under identical conditions.
+An adapter to the workshop's existing kernel-agent ladder remains separate work.
+This file is a PR draft, not evidence of a submitted or accepted upstream PR.

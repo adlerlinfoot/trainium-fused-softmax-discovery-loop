@@ -1,6 +1,46 @@
-# Discover on Trainium: integration context and verification report
+# TTT-Discover on Trainium: engineering contribution and verification report
 
-**Team 12:** Adler Linfoot, Alexader Hackett, Solal Pinhas-Meyer
+
+## Delivered contribution and hardware-access context
+
+This project delivers a hardware-validated NKI fused-softmax evaluator and a
+local Trainium training prototype derived from
+**[TTT-Discover](https://github.com/test-time-training/discover)**. Completed
+experiments establish kernel correctness and device timing, plus four-way
+tensor-parallel LoRA execution and checkpoint restoration on selected real
+GPT-OSS-20B layers. The broader discovery loop is implemented but has not
+completed an end-to-end hardware validation run.
+
+Development took place during the NYU × Annapurna Labs workshop with access to
+a Trainium2 seat. **The contributor maintaining this handoff no longer has access
+to that seat.** The deliverable is therefore the implemented infrastructure,
+completed verification gates, and preserved evidence. Further device validation
+requires a maintainer or collaborator with suitable hardware. Loss of access
+explains the current validation boundary; it does not establish that the full
+model or discovery paths would succeed on another run. No new hardware run is
+claimed for this documentation revision.
+
+## Attribution and adaptation
+
+[TTT-Discover](https://github.com/test-time-training/discover), accompanying
+*Learning to Discover at Test Time*, supplies the upstream test-time learning
+and search implementation. This port uses reference commit
+[`6c40e82dab9d5de7416ac873ad5cd3106084aaed`](https://github.com/test-time-training/discover/tree/6c40e82dab9d5de7416ac873ad5cd3106084aaed).
+Credit for the retained algorithms belongs to the upstream authors. This project
+does not claim to originate those algorithms or reproduce their published results.
+
+| Derived from TTT-Discover | Implemented for this Trainium project |
+| --- | --- |
+| State representation and PUCT parent sampling | NKI fused-softmax contract, correctness evaluator, and device latency rewards |
+| Adaptive entropic advantages and constant-reward group handling | Local PyTorch/Neuron LoRA backend replacing the Tinker service dependency |
+| GPT-OSS rendering and two-phase completion | TP4 attention/expert sharding and replicated adapter-gradient reduction |
+| Selected persistence and completion utilities | Worker lifecycle, policy fingerprints, checkpoint/resume integration, and hardware verification tooling |
+
+The [runtime provenance manifest](../trainium-softmax/rl/vendor/PROVENANCE.json)
+records retained code and local changes. [Reference snapshots](../discover-reference/README.md)
+support AST parity tests and are not imported at runtime. Upstream MIT notices
+are retained in the reference and vendor directories. This is a focused port,
+not a replacement for the full upstream launcher or its GPU environments.
 
 ## What this was intended to plug into
 
@@ -146,13 +186,28 @@ layers changes the model function, so this does not measure full-model quality.
 The partial gate used a synthetic +1 advantage to isolate update mechanics;
 it was not driven by measured kernel rewards.
 
+The seed's absolute latency is a baseline measurement, not evidence of a
+performance improvement or competitiveness against an optimized library kernel.
+Its row-sequential implementation leaves row tiling as a future optimization
+hypothesis that requires hardware measurement. The CPU software results include
+mocked orchestration and cannot establish accelerator performance. The recorded
+prepared upstream checkout passed all 20 software tests; those historical checks
+and device experiments were not rerun for this documentation revision.
+
+Reviewable artifacts include [per-case seed timings](../trainium-softmax/evidence/seed-hardware/best.json),
+the [seed implementation](../trainium-softmax/evidence/seed-hardware/best.py),
+[evaluator tests](../trainium-softmax/evidence/continuation/evaluator-tests.txt),
+[training tests](../trainium-softmax/evidence/continuation/training-tests.txt),
+[tensor provenance](../trainium-softmax/evidence/continuation/partial-provenance.json),
+and [recorded handoff validation](HANDOFF_VALIDATION.json).
+
 The bounded partial run used 17.32 minutes of hardware testing. Cleanup and
 evidence capture completed about 25.26 minutes after its clock started, and
 the final push followed within the deadline. Qwen was restored and healthy;
 experiment workers exited. The [summary](../trainium-softmax/evidence/continuation/partial-tp4/summary.json),
 per-rank events/results, tensor provenance and full session log are tracked.
 
-## Remaining work and handoff
+## Handoff after workshop hardware access
 
 Full GPT-OSS-20B TP4 training, an end-to-end task-driven Discover iteration,
 and model-generated kernel speedups remain unverified. The earlier full-model
@@ -160,10 +215,24 @@ attempt was cancelled during initialization when the scope changed. The later
 request to generate kernels was interrupted before any candidate was written;
 there are no new generated kernels to include in this handoff.
 
-Future work should validate full-model memory/compilation, then exercise a
-measured nonconstant-reward group and generation from the resulting policy.
-An adapter into the workshop's original kernel-agent ladder remains separate
-work. Runtime artifacts are excluded; a fresh clone needs the pinned setup
-and checkpoint download. The [handoff guide](HANDOFF.md) describes the additive
-transfer into the target repository and the [PR draft](PR_DESCRIPTION.md)
-states the verified scope for reviewers.
+With seat access ended, the next hardware work is a bounded validation plan for
+a future maintainer, rather than a prerequisite for presenting the completed
+engineering contribution:
+
+1. Recreate the [pinned environment](../trainium-softmax/rl/README.md) and rerun
+   seed correctness/timing and TP4 mechanics on an idle device with fresh outputs.
+2. Establish full-model memory fit and forward/backward compilation before
+   claiming full GPT-OSS-20B training. The earlier EP2 backward compilation
+   encountered a recorded memory failure; full TP4 remains unverified.
+3. Execute a discovery group with nonconstant measured task rewards, preserve
+   the resulting update, and generate from the updated policy.
+4. Compare accepted candidates against the seed under identical conditions,
+   reporting per-shape timings and repeated measurements before claiming speedup.
+
+CPU tests, documentation, and evidence inspection can continue without a seat.
+Mocked tests cannot extend the hardware claims. An adapter into the workshop's
+original kernel-agent ladder remains separate work. Runtime artifacts are
+excluded; a fresh clone needs pinned setup and checkpoint download. The
+[handoff guide](HANDOFF.md) describes the proposed additive transfer, and the
+[PR draft](PR_DESCRIPTION.md) states the verified scope. A prepared draft is
+not a submitted or accepted upstream PR.

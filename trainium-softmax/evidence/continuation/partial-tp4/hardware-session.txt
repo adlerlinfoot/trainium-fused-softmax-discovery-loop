@@ -4,15 +4,35 @@
 {"phase": "initialize", "time": 1791663077.9669473, "model": "/workspace/impact2/trainium-softmax/.partial-checkpoint", "device": "xla", "tiny": false, "static_experts": true, "tensor_parallel_size": 4, "cached_sampling": false, "checkpoint_activations": true, "scope": "partial-model verification"}
 {"phase": "initialize", "time": 1791663077.9778402, "model": "/workspace/impact2/trainium-softmax/.partial-checkpoint", "device": "xla", "tiny": false, "static_experts": true, "tensor_parallel_size": 4, "cached_sampling": false, "checkpoint_activations": true, "scope": "partial-model verification"}
 `torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
 `torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:13<00:27, 13.77s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:13<00:27, 13.78s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:14<00:28, 14.41s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:15<00:31, 15.57s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:18<00:08,  8.37s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:18<00:08,  8.41s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:19<00:08,  8.69s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:20<00:09,  9.24s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:22<00:00,  6.66s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:22<00:00,  7.66s/it]
-Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  6.80s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  7.77s/it]
-Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  6.88s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  7.94s/it]
+
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:13<00:27, 13.77s/it]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:13<00:27, 13.78s/it]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:14<00:28, 14.41s/it]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:15<00:31, 15.57s/it]
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:18<00:08,  8.37s/it]
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:18<00:08,  8.41s/it]
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:19<00:08,  8.69s/it]
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:20<00:09,  9.24s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:22<00:00,  6.66s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:22<00:00,  7.66s/it]
+
+Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  6.80s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  7.77s/it]
+
+Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  6.88s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  7.94s/it]
 2026-10-10 20:12:04.000604:  37953  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_5604251773344229742+fad94d7c/model.neff
 2026-10-10 20:12:04.000903:  37955  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_10056644596313882045+fad94d7c/model.neff
-Loading checkpoint shards: 100%|██████████| 3/3 [00:25<00:00,  7.14s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:25<00:00,  8.34s/it]
+
+Loading checkpoint shards: 100%|██████████| 3/3 [00:25<00:00,  7.14s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:25<00:00,  8.34s/it]
 2026-10-10 20:12:05.000763:  37954  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_6022719653957357051+fad94d7c/model.neff
 2026-10-10 20:12:06.000208:  37952  [INFO]: Using a cached neff at /workspace/impact2/trainium-softmax/.neuron-cache/neuronxcc-2.27.5334.0+f702b353/MODULE_9931496210829355870+fad94d7c/model.neff
 {"phase": "loaded", "time": 1791663126.310905, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee", "selected_layers": [0, 6, 12, 17, 23], "attention_settings": [{"original_index": 0, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 6, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 12, "attention_type": "sliding_attention", "sliding_window": 128}, {"original_index": 17, "attention_type": "full_attention", "sliding_window": null}, {"original_index": 23, "attention_type": "full_attention", "sliding_window": null}]}
@@ -26,7 +46,7 @@
  create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/rank-1/events.json
  create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/rank-2/events.json
  create mode 100644 trainium-softmax/evidence/continuation/partial-tp4/rank-3/events.json
-To https://github.com/adlerlinfoot/impact2.git
+To [repository URL redacted]
    6cae633..2be19a3  HEAD -> main
 {"phase": "github_checkpoint_pushed", "time": 1791663318.0675013}
 ........
@@ -47,17 +67,17 @@ Compiler status PASS
 {"phase": "sampled", "time": 1791663369.5922964, "prompt_tokens": [10930, 448, 478, 66495, 10143, 3228, 22854, 13], "tokens": [1023], "logprobs": [-9.290647506713867], "policy_version": 0, "adapter_sha256": "e9e880cfc8bf1d206702d953337259d2b8edd1e3a47993925feee6dee1ad6aee"}
 ........................................[main 606b312] Checkpoint partial TP4 hardware progress
  5 files changed, 89 insertions(+), 1 deletion(-)
-To https://github.com/adlerlinfoot/impact2.git
+To [repository URL redacted]
    2be19a3..606b312  HEAD -> main
 {"phase": "github_checkpoint_pushed", "time": 1791663559.849821}
 ................................................[main 6c3eb3f] Checkpoint partial TP4 hardware progress
  1 file changed, 1 insertion(+), 1 deletion(-)
-To https://github.com/adlerlinfoot/impact2.git
+To [repository URL redacted]
    606b312..6c3eb3f  HEAD -> main
 {"phase": "github_checkpoint_pushed", "time": 1791663801.532226}
 ................................................[main 7116cab] Checkpoint partial TP4 hardware progress
  1 file changed, 1 insertion(+), 1 deletion(-)
-To https://github.com/adlerlinfoot/impact2.git
+To [repository URL redacted]
    6c3eb3f..7116cab  HEAD -> main
 {"phase": "github_checkpoint_pushed", "time": 1791664043.619789}
 ....
